@@ -1,10 +1,8 @@
-import React from "react";
-import Link from "next/link";
+import Link from 'next/link';
 
-const Sell = (props) => (
+const Sell = props => (
   <div>
-    <p>Sell</p>
-    <Link href="/">Home!</Link>
+    <p>Sell!</p>
   </div>
 );
 
