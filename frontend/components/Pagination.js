@@ -27,7 +27,7 @@ const Pagination = props => (
         <PaginationStyles>
           <Head>
             <title>
-              Sick Fits! � Page {page} of {pages}
+              Sick Fits! - Page {page} of {pages}
             </title>
           </Head>
           <Link
@@ -38,7 +38,7 @@ const Pagination = props => (
             }}
           >
             <a className="prev" aria-disabled={page <= 1}>
-              ? Prev
+              ← Prev
             </a>
           </Link>
           <p>
@@ -53,7 +53,7 @@ const Pagination = props => (
             }}
           >
             <a className="prev" aria-disabled={page >= pages}>
-              Next ?
+              Next →
             </a>
           </Link>
         </PaginationStyles>
