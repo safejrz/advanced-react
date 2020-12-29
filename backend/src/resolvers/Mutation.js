@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const oneyear = 1000 * 60 * 60 * 24 * 365;
 
 const Mutations = {
   async createItem(parent, args, ctx, info) {
@@ -64,7 +65,7 @@ const Mutations = {
     // We set the jwt as a cookie on the response
     ctx.response.cookie('token', token, {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year cookie
+      maxAge: oneyear, // 1 year cookie
     });
     // Finalllllly we return the user to the browser
     return user;
