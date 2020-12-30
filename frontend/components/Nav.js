@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import NavStyles from './styles/NavStyles';
-import User from './User';
+import Link from "next/link";
+import NavStyles from "./styles/NavStyles";
+import User from "./User";
 
 const Nav = () => (
   <User>
@@ -26,7 +26,6 @@ const Nav = () => (
           <Link href="/signup">
             <a>Sign In</a>
           </Link>
-
         )}
       </NavStyles>
     )}
