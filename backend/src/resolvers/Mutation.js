@@ -1,8 +1,5 @@
-const bcrypt = require("bcryptjs");
-const {
-  singleFieldOnlyMessage,
-} = require("graphql/validation/rules/SingleFieldSubscriptions");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const oneyear = 1000 * 60 * 60 * 24 * 365;
 
 const Mutations = {
@@ -58,7 +55,7 @@ const Mutations = {
         data: {
           ...args,
           password,
-          permissions: { set: ["USER"] },
+          permissions: { set: ['USER'] },
         },
       },
       info
@@ -66,7 +63,7 @@ const Mutations = {
     // create the JWT token for them
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     // We set the jwt as a cookie on the response
-    ctx.response.cookie("token", token, {
+    ctx.response.cookie('token', token, {
       httpOnly: true,
       maxAge: oneyear, // 1 year cookie
     });
@@ -93,6 +90,10 @@ const Mutations = {
     });
     // 5. Return the user
     return user;
+  },
+  signout(parent, args, ctx, info) {
+    ctx.response.clearCookie('token');
+    return { message: 'Goodbye!' };
   },
 };
 
