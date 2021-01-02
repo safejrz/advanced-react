@@ -2,3 +2,4 @@
 node_modules
 .vscode
 *.bak
+\backend\variables.env
