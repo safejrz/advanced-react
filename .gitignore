@@ -3,3 +3,5 @@ node_modules
 .vscode
 *.bak
 \backend\variables.env
+backend/variables.env.sample
+backend/variables.env
