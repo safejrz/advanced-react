@@ -37,7 +37,7 @@ const Permissions = props => (
                 <th>Name</th>
                 <th>Email</th>
                 {possiblePermissions.map(permission => <th>{permission}</th>)}
-                <th>????</th>
+                <th>👇</th>
               </tr>
             </thead>
             <tbody>{data.users.map(user => <User user={user} />)}</tbody>
