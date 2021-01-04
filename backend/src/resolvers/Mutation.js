@@ -131,7 +131,7 @@ const Mutations = {
     });
     // 3. Email them that reset token
     const mailRes = await transport.sendMail({
-      from: 'ingjrz@gmail.com',
+      from: "ingjrz@gmail.com",
       to: user.email,
       subject: 'Your Password Reset Token',
       html: makeANiceEmail(`Your Password Reset Token is here!
@@ -215,8 +215,7 @@ const Mutations = {
     // 1. Make sure they are signed in
     const { userId } = ctx.request;
     if (!userId) {
-      throw new Error('You must be signed in to add an item to the cart!');
-    
+      throw new Error("You must be signed in to add an item to the cart!");
     }
     // 2. Query the users current cart
     const [existingCartItem] = await ctx.db.query.cartItems({
@@ -247,6 +246,30 @@ const Mutations = {
             connect: { id: args.id },
           },
         },
+      },
+      info
+    );
+  },
+  async removeFromCart(parent, args, ctx, info) {
+    // 1. Find the cart item
+    const cartItem = await ctx.db.query.cartItem(
+      {
+        where: {
+          id: args.id,
+        },
+      },
+      `{ id, user { id }}`
+    );
+    // 1.5 Make sure we found an item
+    if (!cartItem) throw new Error('No CartItem Found!');
+    // 2. Make sure they own that cart item
+    if (cartItem.user.id !== ctx.request.userId) {
+      throw new Error('Cheatin huhhhh');
+    }
+    // 3. Delete that cart item
+    return ctx.db.mutation.deleteCartItem(
+      {
+        where: { id: args.id },
       },
       info
     );
