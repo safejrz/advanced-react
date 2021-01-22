@@ -36,7 +36,7 @@ const Query = {
     }
     // 2. Query the current order
     const order = await ctx.db.query.order({
-        where: { id: args.id }, 
+        where: { id: args.id },
       },
       info
     );
@@ -48,6 +48,20 @@ const Query = {
     }
     // 4. Return the order
     return order;
+  },
+  async orders(parent, args, ctx, info) {
+    const { userId } = ctx.request;
+    if (!userId) {
+      throw new Error('you must be signed in!');
+    }
+    return ctx.db.query.orders(
+      {
+        where: {
+          user: { id: userId },
+        },
+      },
+      info
+    );
   },
 };
 
