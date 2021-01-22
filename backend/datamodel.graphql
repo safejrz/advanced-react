@@ -52,4 +52,7 @@ type Order {
   total: Int!
   user: User!
   charge: String!
+  ## Commented due to problems with newer versions of prisma!
+  # createdAt: DateTime!
+  # updatedAt: DateTime!
 }

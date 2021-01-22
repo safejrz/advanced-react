@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/javier-rivera-5ed8ea/sickfits/dev
-# timestamp: Tue Jan 12 2021 20:40:07 GMT-0600 (Central Standard Time (Mexico))
+# timestamp: Thu Jan 21 2021 18:28:59 GMT-0600 (Central Standard Time (Mexico))
 
 type AggregateCartItem {
   count: Int!
@@ -795,8 +795,8 @@ type OrderItem implements Node {
   id: ID!
   title: String!
   description: String!
-  image: String
-  largeImage: String
+  image: String!
+  largeImage: String!
   price: Int!
   quantity: Int!
   user: User
@@ -816,8 +816,8 @@ input OrderItemCreateInput {
   id: ID
   title: String!
   description: String!
-  image: String
-  largeImage: String
+  image: String!
+  largeImage: String!
   price: Int!
   quantity: Int
   user: UserCreateOneInput
@@ -858,8 +858,8 @@ type OrderItemPreviousValues {
   id: ID!
   title: String!
   description: String!
-  image: String
-  largeImage: String
+  image: String!
+  largeImage: String!
   price: Int!
   quantity: Int!
 }
